@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Deteksi Pengunjung WA 🚨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .slide {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-100 font-sans min-h-screen flex items-center justify-center p-4 selection:bg-cyan-400 selection:text-slate-900">
+
+    <!-- Container Utama Card -->
+    <main class="w-full max-w-sm bg-[#1e293b] rounded-3xl p-6 shadow-2xl border border-slate-700 relative overflow-hidden text-center">
+        
+        <!-- ================= SLIDE 1: OPENING ================= -->
+        <div id="slide1" class="slide active flex-col items-center space-y-5 py-4">
+            <div class="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center text-4xl border border-cyan-500/30 animate-bounce">
+                🚨
+            </div>
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-cyan-400 tracking-widest uppercase bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                    Warning System
+                </span>
+                <h1 class="text-xl font-extrabold text-white pt-1">
+                    Ada yang Nyasar ke Link Ini! 🤭
+                </h1>
+                <p class="text-slate-400 text-xs leading-relaxed px-2">
+                    Karena kamu udah terlanjur nge-klik link dari Story WA ini, kamu wajib nyelesaiin tes singkat ini sebelum bisa keluar!
+                </p>
+            </div>
+            <button onclick="nextSlide(2)" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 px-6 rounded-2xl shadow-lg shadow-cyan-900/30 transition transform active:scale-95 text-sm">
+                Mulai Tes 🚀
+            </button>
+        </div>
+
+        <!-- ================= SLIDE 2: PERTANYAAN 1 ================= -->
+        <div id="slide2" class="slide flex-col space-y-4 py-2">
+            <div class="space-y-1">
+                <span class="text-[10px] text-cyan-400 font-medium uppercase tracking-wider">Pertanyaan 1 dari 3</span>
+                <h2 class="text-base font-bold text-white">Jujur, kenapa kamu klik link ini? 🤔</h2>
+            </div>
+
+            <div class="space-y-2.5 pt-1 text-left">
+                <button onclick="pilihJawab(2, 'A')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">A.</span> Kepo doang, jarinya gatel mau pencet.
+                </button>
+                <button onclick="pilihJawab(2, 'B')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">B.</span> Nyasar, tadinya mau buka grup.
+                </button>
+                <button onclick="pilihJawab(2, 'C')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">C.</span> Emang sengaja nungguin update status ini 😜
+                </button>
+            </div>
+
+            <div id="respon-2" class="hidden bg-cyan-500/10 border border-cyan-500/30 p-2.5 rounded-xl text-xs text-cyan-300"></div>
+
+            <button id="btn-next-2" onclick="nextSlide(3)" class="hidden w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 px-6 rounded-2xl shadow-lg transition text-xs">
+                Lanjut Pertanyaan 2 ➡️
+            </button>
+        </div>
+
+        <!-- ================= SLIDE 3: PERTANYAAN 2 ================= -->
+        <div id="slide3" class="slide flex-col space-y-4 py-2">
+            <div class="space-y-1">
+                <span class="text-[10px] text-cyan-400 font-medium uppercase tracking-wider">Pertanyaan 2 dari 3</span>
+                <h2 class="text-base font-bold text-white">Berapa persen tingkat kegabutan kamu hari ini? 📊</h2>
+            </div>
+
+            <div class="space-y-2.5 pt-1 text-left">
+                <button onclick="pilihJawab(3, 'A')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">A.</span> 50% - Masih ada kerjaan dikit.
+                </button>
+                <button onclick="pilihJawab(3, 'B')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">B.</span> 99% - Cuma rebahan sambil scroll HP.
+                </button>
+                <button onclick="pilihJawab(3, 'C')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">C.</span> 1000% - Sampe rela ngisi kuis gajelas ini 😭
+                </button>
+            </div>
+
+            <div id="respon-3" class="hidden bg-cyan-500/10 border border-cyan-500/30 p-2.5 rounded-xl text-xs text-cyan-300"></div>
+
+            <button id="btn-next-3" onclick="nextSlide(4)" class="hidden w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 px-6 rounded-2xl shadow-lg transition text-xs">
+                Lanjut Pertanyaan 3 ➡️
+            </button>
+        </div>
+
+        <!-- ================= SLIDE 4: PERTANYAAN 3 ================= -->
+        <div id="slide4" class="slide flex-col space-y-4 py-2">
+            <div class="space-y-1">
+                <span class="text-[10px] text-cyan-400 font-medium uppercase tracking-wider">Pertanyaan 3 dari 3</span>
+                <h2 class="text-base font-bold text-white">Seberapa sering kamu liat status WA aku? 👀</h2>
+            </div>
+
+            <div class="space-y-2.5 pt-1 text-left">
+                <button onclick="pilihJawab(4, 'A')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">A.</span> Jarang, pas lewat doang.
+                </button>
+                <button onclick="pilihJawab(4, 'B')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">B.</span> Sering, kamu kan konten kreator status wkwk!
+                </button>
+                <button onclick="pilihJawab(4, 'C')" class="w-full bg-slate-800 hover:bg-slate-700/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-200 transition">
+                    <span class="font-bold text-cyan-400">C.</span> Selalu nonton paling depan! 🔥
+                </button>
+            </div>
+
+            <div id="respon-4" class="hidden bg-cyan-500/10 border border-cyan-500/30 p-2.5 rounded-xl text-xs text-cyan-300"></div>
+
+            <button id="btn-next-4" onclick="nextSlide(5)" class="hidden w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold py-3 px-6 rounded-2xl shadow-lg transition text-xs animate-bounce">
+                Masuk ke Level Narsis 🔥
+            </button>
+        </div>
+
+        <!-- ================= SLIDE 5: FOTO & TOMBOL NGEJEK ================= -->
+        <div id="slide5" class="slide flex-col items-center space-y-3 py-1">
+            <div class="space-y-1">
+                <span class="text-[10px] bg-amber-400/20 text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-400/30 uppercase">
+                    Penilaian Fisik 😎
+                </span>
+                <h2 class="text-base font-bold text-white pt-1">Jujur Deh...</h2>
+            </div>
+
+            <!-- FOTO KAMU -->
+            <div class="relative">
+                <img src="foto-saya.jpeg" alt="Foto Saya" class="w-40 h-52 object-cover rounded-2xl shadow-xl border-2 border-cyan-500/40 mx-auto">
+            </div>
+
+            <p class="text-xs text-slate-200 font-medium">
+                Orang di foto ini ganteng banget kan?
+            </p>
+
+            <!-- Teks Ejekan Dinamis -->
+            <div id="teks-ejekan" class="h-5 text-[11px] font-bold text-pink-400 animate-pulse"></div>
+
+            <!-- Tombol Pilihan Sejajar -->
+            <div class="flex justify-center items-center gap-2.5 w-full pt-1 relative min-h-[45px]">
+                <!-- Tombol Benar -->
+                <button onclick="pilihGanteng()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-2xl shadow-lg transition flex-1 active:scale-95 z-10">
+                    GANTENG BANGET ✨
+                </button>
+
+                <!-- Tombol Jebakan (Kabur) -->
+                <button id="btn-jelek" onmouseover="aksiKabur()" ontouchstart="aksiKabur()" onclick="aksiKabur()" class="bg-slate-800 hover:bg-slate-700 text-slate-400 font-semibold text-xs px-4 py-2.5 rounded-2xl border border-slate-700 transition flex-1 z-20">
+                    Jelek 😜
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 6: BONUS LEVEL / SAWER QRIS ================= -->
+        <div id="slide6" class="slide flex-col items-center space-y-3 py-1">
+            <div class="space-y-1">
+                <span class="text-[10px] bg-emerald-400/20 text-emerald-300 font-bold px-3 py-1 rounded-full border border-emerald-400/30 uppercase tracking-widest">
+                    BONUS LEVEL 💸
+                </span>
+                <h2 class="text-base font-bold text-white pt-1">Kotak Apresiasi Kreator ☕</h2>
+                <p class="text-slate-400 text-[11px] px-2 leading-relaxed">
+                    Udah terhibur kan sama kuis gabut ini? Kalau mau ngasih tip kopi / es teh hangat bisa lewat QRIS di bawah ini wkwk!
+                </p>
+            </div>
+
+            <!-- FOTO QRIS ALL PAYMENT -->
+            <div class="relative bg-white p-2 rounded-2xl shadow-2xl border-2 border-emerald-500/50 max-w-[210px] mx-auto">
+                <img src="foto-2.jpeg" alt="QRIS All Payment" class="w-full h-auto rounded-xl object-contain">
+            </div>
+
+            <p class="text-[10px] text-slate-400 italic">
+                *Tinggal scan / screenshot pake GoPay, OVO, Dana, ShopeePay, BCA, dll. Bebas nominalnya wkwk!
+            </p>
+
+            <button onclick="alert('Makasih banyak udah mampir dan main kuis ini! Semoga harimu menyenangkan 🔥')" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 px-6 rounded-2xl shadow-lg transition text-xs mt-1">
+                Selesai & Keluar 🎉
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Script Logika Interaktif -->
+    <script>
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+        }
+
+        function pilihJawab(slideNum, opsi) {
+            const resp = document.getElementById('respon-' + slideNum);
+            const btnNext = document.getElementById('btn-next-' + slideNum);
+            resp.classList.remove('hidden');
+
+            if (slideNum === 2) {
+                if(opsi === 'A') resp.innerHTML = "Ketahuan banget tipikal penyimak story orang! 🔍";
+                else if(opsi === 'B') resp.innerHTML = "Alasan klasik kalau salah klik link wkwk 😭";
+                else resp.innerHTML = "Wah, pemenangnya nih! Makasih udah nungguin 🌟";
+            } else if (slideNum === 3) {
+                if(opsi === 'A') resp.innerHTML = "Lumayan lah ya masih ada produktifnya dikit 👍";
+                else if(opsi === 'B') resp.innerHTML = "Sama banget, kasur adalah tempat terbaik 🛌";
+                else resp.innerHTML = "Parah banget gabutnya wkwk tapi seru kan? 🤣";
+            } else if (slideNum === 4) {
+                if(opsi === 'A') resp.innerHTML = "Yah, nanti aku bikin status lebih sering deh 😜";
+                else if(opsi === 'B') resp.innerHTML = "Asik, fans berat status nih wkwk 🔥";
+                else resp.innerHTML = "Fix, penonton nomor 1! Wajib dikasih piala 🏆";
+            }
+
+            btnNext.classList.remove('hidden');
+        }
+
+        const daftarEjekan = [
+            "Wleee gak kena! 😛", 
+            "Tombol ini rusak, pilih kiri aja wkwk!", 
+            "Dih, gak usah bohong deh! 🤨", 
+            "Udah sih, jujur aja pilih yang kiri 😏", 
+            "Eits gabisa ditolak wkwk!",
+            "Eror 404: Pilihan 'Jelek' Tidak Ditemukan!"
+        ];
+
+        function aksiKabur() {
+            const btn = document.getElementById('btn-jelek');
+            const teksEjek = document.getElementById('teks-ejekan');
+            
+            const randomPesan = daftarEjekan[Math.floor(Math.random() * daftarEjekan.length)];
+            teksEjek.innerHTML = randomPesan;
+
+            const x = Math.floor(Math.random() * 90) - 45;
+            const y = Math.floor(Math.random() * 45) - 22;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+
+            btn.style.opacity = '0.2';
+            setTimeout(() => {
+                btn.style.opacity = '1';
+            }, 150);
+        }
+
+        function pilihGanteng() {
+            alert('Nah gitu dong, jujur emang dari lahir wkwk! 😆 Lanjut ke Bonus Level yuk!');
+            nextSlide(6);
+        }
+    </script>
+</body>
+</html>
